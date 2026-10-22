@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelson Barbershop</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Connect PyScript -->
+    <link rel="stylesheet"
+          href="https://pyscript.net/releases/2025.3.1/core.css">
+    <script type="module"
+            src="https://pyscript.net/releases/2025.3.1/core.js"></script>
+    <script type="py" src="./main.py"></script>
+
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="#home" class="logo">NELSON<span> </span>BARBERSHOP</a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#haircuts">Haircuts</a>
+            <a href="#booking">Book Now</a>
+        </nav>
+
+        <a href="#haircuts" class="nav-button">Explore Styles</a>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">YOUR STYLE. YOUR IDENTITY.</p>
+                <h1>LOOK SHARP.<br><span>FEEL CONFIDENT.</span></h1>
+                <p class="hero-description">
+                    Great haircuts, skilled barbers, and a fresh look
+                    that matches your personality. Find your next style
+                    and check our prices before you visit.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#haircuts" class="button primary">
+                        Explore Haircuts
+                    </a>
+                    <a href="#booking" class="button secondary">
+                        Book an Appointment
+                    </a>
+                </div>
+
+                <div class="hero-details">
+                    <div>
+                        <strong>₱100+</strong>
+                        <span>Starting Price</span>
+                    </div>
+                    <div>
+                        <strong>10+</strong>
+                        <span>Haircut Styles</span>
+                    </div>
+                    <div>
+                        <strong>100%</strong>
+                        <span>Fresh Look</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="image-overlay">
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="haircuts section" id="haircuts">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">FIND YOUR NEXT LOOK</p>
+                    <h2>Explore Our <span>Haircuts</span></h2>
+                    <p class="muted">
+                        Browse our styles, compare prices, and choose
+                        the haircut that suits you.
+                    </p>
+                </div>
+                <span class="availability">
+                    <span class="status-dot"></span>
+                    Styles Available
+                </span>
+            </div>
+
+            <div class="catalog-tools">
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search haircut styles..."
+                    aria-label="Search haircuts">
+
+                <div class="filters" id="categoryFilters">
+                    <button class="filter active" data-category="All">
+                        All Styles
+                    </button>
+                    <button class="filter" data-category="Fade">
+                        Fade
+                    </button>
+                    <button class="filter" data-category="Classic">
+                        Classic
+                    </button>
+                    <button class="filter" data-category="Modern">
+                        Modern
+                    </button>
+                </div>
+            </div>
+
+            <!-- Python inserts the haircut cards here -->
+            <div class="haircut-grid" id="haircutGrid">
+                <p class="loading">Loading haircut styles...</p>
+            </div>
+
+            <p class="results-count" id="resultsCount"></p>
+        </section>
+
+        <section class="booking section" id="booking">
+            <div class="booking-intro">
+                <p class="eyebrow">READY FOR A FRESH CUT?</p>
+                <h2>Book Your<br><span>Next Appointment.</span></h2>
+                <p class="muted">
+                    Choose your favorite haircut and leave your
+                    details. We will show your booking summary
+                    right here.
+                </p>
+
+                <div class="booking-note">
+                    <span class="note-icon">✂</span>
+                    <div>
+                        <strong>Look good. Feel good.</strong>
+                        <p>Your next great look starts here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="booking-form" id="bookingForm">
+                <h3>Appointment Details</h3>
+                <p class="muted small">
+                    Fill in the details below to create your booking request.
+                </p>
+
+                <label for="customerName">Full Name</label>
+                <input type="text" id="customerName"
+                       placeholder="Enter your full name" required>
+
+                <label for="customerPhone">Phone Number</label>
+                <input type="tel" id="customerPhone"
+                       placeholder="e.g. 09XXXXXXXXX" required>
+
+                <label for="haircutSelect">Choose a Haircut</label>
+                <select id="haircutSelect" required>
+                    <option value="">Select a haircut</option>
+                </select>
+
+                <div class="form-row">
+                    <div>
+                        <label for="bookingDate">Preferred Date</label>
+                        <input type="date" id="bookingDate" required>
+                    </div>
+                    <div>
+                        <label for="bookingTime">Preferred Time</label>
+                        <select id="bookingTime" required>
+                            <option value="">Select time</option>
+                            <option value="09:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                            <option value="17:00">5:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="total-row">
+                    <span>Estimated Price</span>
+                    <strong id="estimatedPrice">₱0.00</strong>
+                </div>
+
+                <button type="submit" class="button primary submit-button">
+                    Create Booking Request
+                </button>
+
+                <div id="bookingMessage" class="booking-message"
+                     role="status" aria-live="polite"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#home" class="logo">NELSON<span> </span>BARBERSHOP</a>
+        <p>Good cuts. Good vibes. Great confidence.</p>
+        <p class="copyright">© 2026 NELSON BARBERSHOP</p>
+    </footer>
+</body>
+</html>
