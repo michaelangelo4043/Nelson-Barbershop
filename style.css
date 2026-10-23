@@ -246,15 +246,11 @@ h1, h2, h3 {
 }
 
 .hero-image {
-    min-height: 440px;
-    height: 100%;
+    height: 50%;
     border-radius: 6px;
     position: relative;
     overflow: hidden;
-    background:
-        linear-gradient(0deg, #0b0b0aee, #0b0b0a00 70%),
-        url('realogo.png')
-        center / cover;
+    
 }
 
 .image-overlay {
